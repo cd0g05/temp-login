@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>cartercripe.com — Under Construction (mock-up)</title>
+
+<!--
+  MOCK-UP NOTES
+  - Body font: Inter (loaded from Google Fonts here for preview convenience;
+    in the real build, self-host Inter or use next/font).
+  - Display font: the real site uses "Druk-aatie Burti" (self-hosted).
+    Druk-aatie Burti is NOT loaded in this mock-up, so we stand in with
+    "Oswald" (a condensed bold display face) to approximate the look.
+    Swap the --display-font variable once the real font is installed.
+  - The crane + dangling letter are inline SVG (clean line-art), STATIC for MVP.
+    Animation (crane hoisting the letter) is Post-MVP / v2.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --display-font: 'Oswald', 'Arial Narrow', sans-serif; /* stand-in for Druk-aatie Burti */
+    --body-font: 'Inter', system-ui, sans-serif;
+    --ink: #16181d;
+    --ink-soft: #555b66;
+    --line: #e6e8ec;
+    --hazard-yellow: #f5c518;
+    --hazard-black: #16181d;
+    --accent: #16181d;
+    --card-shadow: 0 10px 40px rgba(20, 24, 31, 0.08);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--body-font);
+    color: var(--ink);
+    background: #ffffff;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    height: 100vh;            /* single screen, no scroll */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---------- HAZARD TAPE BANNER ---------- */
+  .hazard-tape {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--hazard-yellow);
+    border-top: 6px solid;
+    border-bottom: 6px solid;
+    border-image: repeating-linear-gradient(
+      45deg,
+      var(--hazard-black) 0 18px,
+      var(--hazard-yellow) 18px 36px
+    ) 6;
+    text-align: center;
+    padding: 10px 16px;
+  }
+  .hazard-tape p {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+    color: var(--hazard-black);
+  }
+  .hazard-tape .warn { letter-spacing: 0; }
+
+  /* ---------- PAGE LAYOUT ---------- */
+  .wrap {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: clamp(10px, 2.5vh, 28px) 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   /* login lands in the vertical middle */
+    text-align: center;
+    gap: clamp(14px, 3.2vh, 36px);
+  }
+
+  .hero {
+    position: relative;
+    padding-top: clamp(60px, 11vh, 120px); /* headroom for the crane above the name */
+  }
+
+  .eyebrow {
+    font-family: var(--body-font);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    font-size: clamp(0.78rem, 1.6vw, 1rem);
+    margin: 0 0 0.35em;
+  }
+
+  .hero-name {
+    font-family: var(--display-font);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    font-size: clamp(2.4rem, 8vw, 4.8rem);
+    margin: 0;
+    position: relative;
+  }
+
+  /* The slot reserves the P's horizontal space so the name reads "CARTER CRI_E"
+     with a visible gap, while the real P is lifted out of it by the crane.
+     Everything is sized in em, so it tracks the heading at every breakpoint. */
+  .lift-slot {
+    position: relative;
+    display: inline-block;
+    width: 0.62em;          /* approx width of a P in the display face */
+    vertical-align: baseline;
+  }
+  .lifted-p {
+    position: absolute;
+    left: 50%;
+    bottom: 0.52em;         /* raised above the baseline -> leaves the gap below */
+    transform: translateX(-50%) rotate(12deg);   /* tilt right = dangling under gravity */
+    transform-origin: top center;                /* pivots from the cable attachment */
+  }
+  .crane {
+    position: absolute;
+    left: 50%;
+    bottom: 1.15em;         /* sits just above the lifted P; cable end meets the P's top */
+    width: 2.3em;
+    height: auto;
+    transform: translateX(-50%);
+    pointer-events: none;
+    overflow: visible;
+  }
+
+  .lead { font-size: clamp(0.92rem, 1.6vw, 1.06rem); color: var(--ink-soft); max-width: 48ch; margin: 0.6em auto 0; }
+
+  /* ---------- AUDIENCE COPY (footnote/sidebar) ---------- */
+  .audience {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(12px, 2vw, 26px);
+    max-width: 920px;
+  }
+  .audience p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: clamp(0.85rem, 1.4vw, 0.98rem);
+    flex: 1 1 220px;
+    max-width: 300px;
+    border-top: 3px solid var(--hazard-yellow);
+    padding-top: 10px;
+  }
+  .audience a { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--hazard-yellow); }
+  .audience a:hover { background: var(--hazard-yellow); }
+  .audience .hogwarts { font-style: italic; flex-basis: 100%; max-width: 560px; border-top-color: transparent; padding-top: 0; }
+
+  /* ---------- LOGIN CARD ---------- */
+  .login-zone { display: flex; justify-content: center; width: 100%; }
+  .login-card {
+    width: 100%;
+    max-width: 360px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: var(--card-shadow);
+    padding: 24px 24px 22px;
+    text-align: left;
+  }
+  .login-card .hat { font-size: 1.4rem; }
+  .login-card h2 {
+    font-family: var(--display-font);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 1.15rem;
+    margin: 6px 0 4px;
+  }
+  .login-card .sub { margin: 0 0 18px; color: var(--ink-soft); font-size: 0.86rem; }
+  .field { display: block; margin-bottom: 14px; }
+  .field input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    font-size: 0.98rem;
+    font-family: var(--body-font);
+    outline: none;
+  }
+  .field input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(245,197,24,0.35); }
+  .remember { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 16px; }
+  .btn {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 9px;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.98rem;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+  .btn:hover { background: #000; }
+  .err { display: none; color: #b4232a; font-size: 0.85rem; margin: 0 0 12px; }
+
+  /* ---------- FOOTER ---------- */
+  footer { flex: 0 0 auto; text-align: center; color: var(--ink-soft); font-size: 0.78rem; padding: 8px 16px 16px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 720px) {
+    /* crane + P are em-based, so they scale with the smaller heading automatically */
+    .hero { padding-top: clamp(52px, 16vh, 96px); }
+    .audience p { flex-basis: 100%; }
+  }
+  /* Very short viewports can't honor 100vh without clipping — allow scroll as a safety net */
+  @media (max-height: 620px) {
+    body { height: auto; min-height: 100vh; overflow-y: auto; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HAZARD TAPE BANNER -->
+  <div class="hazard-tape">
+    <p><span class="warn">&#9888;</span>&nbsp; This website is currently under development and not accessible to the public &nbsp;<span class="warn">&#9888;</span></p>
+  </div>
+
+  <main class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <p class="eyebrow">Hi, my name is</p>
+      <h1 class="hero-name">Carter Cri<span class="lift-slot"><!--
+        --><svg class="crane" viewBox="0 0 220 250" fill="none" stroke="#16181d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <!-- jib (horizontal arm) -->
+            <line x1="18" y1="42" x2="204" y2="42" />
+            <line x1="40" y1="58" x2="190" y2="58" />
+            <!-- jib web (truss diagonals) -->
+            <line x1="40" y1="58" x2="58" y2="42" />
+            <line x1="78" y1="58" x2="96" y2="42" />
+            <line x1="116" y1="58" x2="134" y2="42" />
+            <line x1="154" y1="58" x2="172" y2="42" />
+            <!-- counter-jib + counterweight -->
+            <rect x="14" y="40" width="22" height="20" rx="2" fill="#16181d" />
+            <!-- mast (tower) to the side, floating/cropped above the name -->
+            <line x1="150" y1="58" x2="150" y2="150" />
+            <line x1="166" y1="58" x2="166" y2="150" />
+            <line x1="150" y1="78" x2="166" y2="98" />
+            <line x1="166" y1="78" x2="150" y2="98" />
+            <line x1="150" y1="110" x2="166" y2="130" />
+            <line x1="166" y1="110" x2="150" y2="130" />
+            <!-- operator cab -->
+            <rect x="150" y="22" width="20" height="20" rx="3" />
+            <!-- trolley + cable straight down to the hook over the P -->
+            <rect x="103" y="50" width="14" height="9" rx="2" fill="#16181d" />
+            <line x1="110" y1="59" x2="110" y2="232" stroke-width="3" />
+            <!-- hook -->
+            <rect x="100" y="232" width="20" height="12" rx="2" fill="#f5c518" stroke-width="4" />
+          </svg><!--
+        --><span class="lifted-p">P</span></span>e</h1>
+      <p class="lead">Welcome to the construction site. The real cartercripe.com is still being built — pardon the dust.</p>
+    </section>
+
+    <!-- LOGIN (centered focal point) -->
+    <section class="login-zone">
+      <form class="login-card" onsubmit="return false;">
+        <div class="hat">&#9981;</div>
+        <h2>Site Access</h2>
+        <p class="sub">Got the password? Step past the tape.</p>
+        <p class="err" id="err">That password didn't work. Try again.</p>
+        <label class="field">
+          <input type="password" placeholder="Enter access password" autocomplete="current-password" />
+        </label>
+        <label class="remember">
+          <input type="checkbox" checked /> Keep me logged in
+        </label>
+        <button class="btn" type="submit">Enter the site</button>
+      </form>
+    </section>
+
+    <!-- AUDIENCE COPY (to the sides / below the login) -->
+    <section class="audience">
+      <p>If you are a <strong>potential employer</strong>, please avail yourself to <a href="/resume.pdf">my resume</a>.</p>
+      <p>If you are a <strong>friend / teammate / colleague</strong>, please feel free to <a href="mailto:carter.cripe@gmail.com">contact me</a>.</p>
+      <p class="hogwarts">If you are here on behalf of Hogwarts School of Witchcraft and Wizardry, I humbly accept your admissions offer.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    &#169; 2026 Carter Cripe &middot; built in public, one beam at a time
+  </footer>
+</body>
+</html>

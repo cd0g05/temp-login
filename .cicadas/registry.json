@@ -1,0 +1,46 @@
+{
+  "schema_version": "2.0",
+  "initiatives": {
+    "temp-login-page": {
+      "intent": "Temporary construction-themed login gate for cartercripe.com: public landing (resume/contact) + server-side default-deny gate via Next.js middleware and a shared-password sealed cookie",
+      "owner": "unknown",
+      "signals": [],
+      "created_at": "2026-06-21T09:01:03.439835+00:00"
+    }
+  },
+  "branches": {
+    "feat/landing-ui": {
+      "intent": "Scaffold Next.js App Router app and port the approved construction-themed mock-up into the public landing/login page (fonts, assets, single-viewport layout)",
+      "modules": [
+        "app",
+        "public"
+      ],
+      "owner": "unknown",
+      "created_at": "2026-06-21T09:04:36.602173+00:00",
+      "worktree_path": "/Users/cartercripe/dev/code/practice/temp-work-login-feat-landing-ui",
+      "initiative": "temp-login-page"
+    },
+    "feat/auth-gate": {
+      "intent": "Server-side gate: iron-session sealed cookie, login/logout routes with constant-time password check + remember-me, default-deny middleware with public allowlist, placeholder gated /preview page",
+      "modules": [
+        "app-preview",
+        "middleware",
+        "lib",
+        "app-api"
+      ],
+      "owner": "unknown",
+      "created_at": "2026-06-21T20:14:34.349609+00:00",
+      "initiative": "temp-login-page"
+    },
+    "feat/deploy-setup": {
+      "intent": "Production readiness + README setup guide and the interactive Vercel/domain walkthrough; document v3 Supabase upgrade path",
+      "modules": [
+        "readme",
+        "env"
+      ],
+      "owner": "unknown",
+      "created_at": "2026-06-21T20:21:44.624730+00:00",
+      "initiative": "temp-login-page"
+    }
+  }
+}
