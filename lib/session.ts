@@ -1,28 +1,15 @@
-import { getIronSession, type SessionOptions } from "iron-session";
+import { getIronSession } from "iron-session";
 import { cookies } from "next/headers";
+import { sessionOptions, type SessionData } from "./session-config";
 
-export interface SessionData {
-  authed?: boolean;
-  at?: number;
-}
+// Re-export the Edge-safe config for convenience (Node-runtime callers).
+export { sessionOptions, THIRTY_DAYS, type SessionData } from "./session-config";
 
 /**
- * Single source of truth for the sealed-cookie session.
- * Secrets come from env only and are never imported into client components.
+ * Read the session in a Server Component / Route Handler (Node runtime) context.
+ * Uses `next/headers`, so it is NOT importable from Edge middleware — middleware
+ * imports `lib/session-config` instead.
  */
-export const sessionOptions: SessionOptions = {
-  // iron-session requires a secret of at least 32 characters.
-  password: process.env.SESSION_SECRET as string,
-  cookieName: "cc_site",
-  cookieOptions: {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-  },
-};
-
-/** Read the session in a Server Component / Route Handler context. */
 export async function getSession() {
   const cookieStore = await cookies();
   return getIronSession<SessionData>(cookieStore, sessionOptions);

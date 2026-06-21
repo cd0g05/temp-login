@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getIronSession } from "iron-session";
 import { timingSafeEqual } from "node:crypto";
-import { sessionOptions, type SessionData } from "@/lib/session";
+import { sessionOptions, type SessionData } from "@/lib/session-config";
 
 export const runtime = "nodejs";
 
