@@ -68,7 +68,7 @@ export default function Home() {
           </h1>
           <p className="lead">
             Welcome to the construction site. The real cartercripe.com is still
-            being built — pardon the dust.
+            being built, so pardon the dust!
           </p>
         </section>
 
@@ -88,7 +88,7 @@ export default function Home() {
             feel free to{" "}
             <a href="mailto:carter.cripe@gmail.com">contact me</a>.
           </p>
-          <p className="hogwarts">
+          <p >
             If you are here on behalf of Hogwarts School of Witchcraft and
             Wizardry, I humbly accept your admissions offer.
           </p>
@@ -96,7 +96,7 @@ export default function Home() {
       </main>
 
       <footer>
-        &#169; 2026 Carter Cripe &middot; built in public, one beam at a time
+        &#169; 2026 Carter Cripe
       </footer>
     </>
   );
