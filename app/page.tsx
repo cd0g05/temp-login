@@ -85,8 +85,8 @@ export default function Home() {
               <a href="mailto:carter.cripe@gmail.com">contact me</a>.
             </p>
             <p>
-              If you are here on behalf of Hogwarts School of Witchcraft and
-              Wizardry, I humbly accept your admissions offer.
+              If you are here on behalf of <strong>Hogwarts School </strong>of <strong>Witchcraft </strong>and
+              <strong>Wizardry</strong>, I humbly accept your admissions offer.
             </p>
           </section>
 
