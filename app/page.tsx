@@ -86,7 +86,7 @@ export default function Home() {
             </p>
             <p>
               If you are here on behalf of <strong>Hogwarts School </strong>of <strong>Witchcraft </strong>and
-              <strong>Wizardry</strong>, I humbly accept your admissions offer.
+              <strong> Wizardry</strong>, I humbly accept your admissions offer.
             </p>
           </section>
 

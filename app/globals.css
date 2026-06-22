@@ -177,7 +177,7 @@ body {
   width: 100%;
   color: var(--ink-soft);
   font-size: clamp(0.88rem, 1.4vw, 1rem);
-  border-top: 3px solid var(--hazard-yellow);
+  border-top: 2px solid var(--hazard-yellow);
   padding-top: 10px;
 }
 .audience a {
