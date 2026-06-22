@@ -150,21 +150,33 @@ body {
   margin: 0.6em auto 0;
 }
 
-/* ---------- AUDIENCE COPY (to the sides / below) ---------- */
+/* ---------- MIDDLE: centered two columns (contact left, login right) ---------- */
+.middle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 5vw, 64px);
+  width: 100%;
+  max-width: 940px;
+  flex-wrap: wrap; /* stacks on narrow screens */
+}
+
+/* ---------- AUDIENCE COPY (left column, stacked, all three identical) ---------- */
 .audience {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   align-items: flex-start;
-  gap: clamp(12px, 2vw, 26px);
-  max-width: 920px;
+  text-align: left;
+  gap: clamp(14px, 2.2vh, 22px);
+  flex: 1 1 300px;
+  max-width: 420px;
 }
 .audience p {
   margin: 0;
+  width: 100%;
   color: var(--ink-soft);
-  font-size: clamp(0.85rem, 1.4vw, 0.98rem);
-  flex: 1 1 220px;
-  max-width: 300px;
+  font-size: clamp(0.88rem, 1.4vw, 1rem);
   border-top: 3px solid var(--hazard-yellow);
   padding-top: 10px;
 }
@@ -177,19 +189,12 @@ body {
 .audience a:hover {
   background: var(--hazard-yellow);
 }
-.audience .hogwarts {
-  font-style: italic;
-  flex-basis: 100%;
-  max-width: 560px;
-  border-top-color: transparent;
-  padding-top: 0;
-}
 
-/* ---------- LOGIN CARD ---------- */
+/* ---------- LOGIN CARD (right column) ---------- */
 .login-zone {
   display: flex;
   justify-content: center;
-  width: 100%;
+  flex: 0 1 360px;
 }
 .login-card {
   width: 100%;

@@ -72,27 +72,28 @@ export default function Home() {
           </p>
         </section>
 
-        {/* LOGIN (centered focal point) */}
-        <section className="login-zone">
-          <LoginForm />
-        </section>
+        {/* MIDDLE — contact lines on the left, login on the right */}
+        <div className="middle">
+          <section className="audience">
+            <p>
+              If you are a <strong>potential employer</strong>, please avail
+              yourself to <a href="/resume.pdf">my resume</a>.
+            </p>
+            <p>
+              If you are a <strong>friend / teammate / colleague</strong>,
+              please feel free to{" "}
+              <a href="mailto:carter.cripe@gmail.com">contact me</a>.
+            </p>
+            <p>
+              If you are here on behalf of Hogwarts School of Witchcraft and
+              Wizardry, I humbly accept your admissions offer.
+            </p>
+          </section>
 
-        {/* AUDIENCE COPY (to the sides / below the login) */}
-        <section className="audience">
-          <p>
-            If you are a <strong>potential employer</strong>, please avail
-            yourself to <a href="/resume.pdf">my resume</a>.
-          </p>
-          <p>
-            If you are a <strong>friend / teammate / colleague</strong>, please
-            feel free to{" "}
-            <a href="mailto:carter.cripe@gmail.com">contact me</a>.
-          </p>
-          <p >
-            If you are here on behalf of Hogwarts School of Witchcraft and
-            Wizardry, I humbly accept your admissions offer.
-          </p>
-        </section>
+          <section className="login-zone">
+            <LoginForm />
+          </section>
+        </div>
       </main>
 
       <footer>
