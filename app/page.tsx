@@ -62,7 +62,7 @@ export default function Home() {
                   strokeWidth="4"
                 />
               </svg>
-              <span className="lifted-p">P</span>
+              <span className="lifted-p">p</span>
             </span>
             e
           </h1>

@@ -127,6 +127,7 @@ body {
 }
 .lifted-p {
   position: absolute;
+  text-transform: uppercase;
   left: 50%;
   bottom: 0.5em; /* raised above the baseline -> leaves the gap below */
   transform: translateX(-50%) rotate(12deg); /* tilt right = dangling under gravity */
