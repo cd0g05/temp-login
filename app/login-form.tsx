@@ -50,9 +50,9 @@ export default function LoginForm() {
 
   return (
     <form className="login-card" onSubmit={handleSubmit}>
-      <div className="hat" aria-hidden="true">
-        &#9981;
-      </div>
+//       <div className="hat" aria-hidden="true">
+//         &#9981;
+//       </div>
       <h2>Site Access</h2>
       <p className="sub">Got the password? Step past the tape.</p>
       {redirectNote && !error && (
