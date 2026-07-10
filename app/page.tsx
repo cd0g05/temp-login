@@ -7,7 +7,7 @@ export default function Home() {
       <div className="hazard-tape">
         <p>
           <span className="warn">&#9888;</span>&nbsp; This website is currently
-          under development and not accessible to the public &nbsp;
+          under development &nbsp;
           <span className="warn">&#9888;</span>
         </p>
       </div>
